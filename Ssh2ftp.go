@@ -43,13 +43,13 @@ func (a *Ssh2sftp) Connect(user, password, host string, port int) error {
 	auth = make([]ssh.AuthMethod, 0)
 	auth = append(auth, ssh.Password(password))
 
+	//HostKeyCallback: ssh.InsecureIgnoreHostKey()
+	//官方推荐官方推荐ssh.FixedHostKey(key)
 	clientConfig = &ssh.ClientConfig{
 		User:    user,
 		Auth:    auth,
 		Timeout: 30 * time.Second,
-		HostKeyCallback: func(hostname string, remote net.Addr, key ssh.PublicKey) error {
-			return nil
-		},
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
 
 
