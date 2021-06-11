@@ -18,7 +18,6 @@ type Ssh2sftp struct{
 }
 
 func NewFTP() *Ssh2sftp {
-	//返回日志对象
 	Ssh2sftp := &Ssh2sftp{
 	}
 	return Ssh2sftp
