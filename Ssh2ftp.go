@@ -62,6 +62,7 @@ func (a *Ssh2sftp) Connect(user, password, host string, port int) error {
 
 	// create sftp client
 	if a.SftpClient, err = sftp.NewClient(a.Sshcon); err != nil {
+		a.Sshcon.Close()
 		return err
 	}
 	return nil
